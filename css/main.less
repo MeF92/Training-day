@@ -1,0 +1,110 @@
+@light-gray: #dcdcdc;
+@dark-gray: #777777;
+@gray-for-text: #848484;
+
+.adaptive-width(@max-width, @min-width) {
+  max-width: @max-width;
+  min-width: @min-width;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+// Header
+
+body {
+  font: 14px/22px 'PT Sans';
+
+  header {
+    background: @light-gray;
+    width: 100%;
+  }
+}
+
+.header-content-wrapper, nav {
+  .adaptive-width(1000px, 560px);
+}
+
+.header-content-wrapper {
+  box-sizing: border-box;
+  padding: 75px 10px 0 10px;
+  margin: 0 auto;
+  height: 225px;
+  color: @gray-for-text;
+}
+
+.logo {
+  float: left;
+  margin-left: 115px;
+  position: relative;
+
+  h2 {
+    font-size: 30px;
+    font-weight: bold;
+    width: 150px;
+    margin-bottom: 15px;
+  }
+}
+
+.logo::before {
+  content: '';
+  width: 100px;
+  height: 100px;
+  background-color: @dark-gray;
+  position: absolute;
+  left: -110px;
+  top: -5px;
+}
+
+.contacts {
+  float: right;
+
+  p {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+}
+
+// Nav
+
+.nav-wrapper {
+  height: 480px;
+  background: url('../img/main-bg.jpg') no-repeat;
+  background-size: cover;
+
+  nav {
+    padding: 27px 51px 27px 44px;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    ul li {
+      display: inline-block;
+      margin-right: 15px;
+      border-right: 1px solid white;
+      padding-right: 20px;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 30px;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    ul li:last-child {
+      border-right: none;
+    }
+  }
+
+  .nav-bg {
+    background: @dark-gray;
+  }
+}
+
+// main

@@ -20,46 +20,54 @@ body {
 
   header {
     background: @light-gray;
-    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  footer {
+    background: @dark-gray;
   }
 }
 
-.header-content-wrapper, nav {
+.header-content-wrapper, .main-content-wrapper, .footer-content-wrapper, nav {
   .adaptive-width(1000px, 560px);
 }
 
-.header-content-wrapper {
+.main-content-wrapper, .header-content-wrapper, .footer-content-wrapper {
   box-sizing: border-box;
-  padding: 75px 10px 0 10px;
   margin: 0 auto;
-  height: 225px;
-  color: @gray-for-text;
 }
 
-.logo {
-  float: left;
-  margin-left: 115px;
-  position: relative;
+.header-content-wrapper {
+  padding: 75px 10px 0 10px;
+  height: 225px;
+  color: @gray-for-text;
 
-  h2 {
-    font-size: 30px;
-    font-weight: bold;
-    width: 150px;
-    margin-bottom: 15px;
+  .logo {
+    float: left;
+    margin-left: 115px;
+    position: relative;
+
+    ::before {
+      content: '';
+      width: 100px;
+      height: 100px;
+      background-color: @dark-gray;
+      position: absolute;
+      left: -110px;
+      top: -5px;
+      border-radius: 5px;
+    }
+
+    h2 {
+      font-size: 30px;
+      font-weight: bold;
+      width: 150px;
+      margin-bottom: 15px;
+    }
   }
 }
 
-.logo::before {
-  content: '';
-  width: 100px;
-  height: 100px;
-  background-color: @dark-gray;
-  position: absolute;
-  left: -110px;
-  top: -5px;
-}
-
-.contacts {
+.phones {
   float: right;
 
   p {
@@ -82,7 +90,7 @@ body {
 
     ul li {
       display: inline-block;
-      margin-right: 15px;
+      margin-right: 14px;
       border-right: 1px solid white;
       padding-right: 20px;
 
@@ -95,6 +103,30 @@ body {
       a:hover {
         text-decoration: underline;
       }
+
+      > ul {
+        position: absolute;
+        background: @dark-gray;
+        width: 125px;
+        padding: 30px 0 10px 20px;
+        border-radius: 0 0 5px 5px;
+        left: -20px;
+        display: none;
+        li {
+          display: block;
+          border-right: none;
+          margin-bottom: 10px;
+          margin-right: 0;
+        }
+      }
+    }
+
+    ul li:nth-child(2) {
+      position: relative;
+    }
+
+    ul li:nth-child(2):hover ul {
+      display: block;
     }
 
     ul li:last-child {
@@ -108,3 +140,102 @@ body {
 }
 
 // main
+
+.main-content-wrapper {
+  padding: 0px 10px 0 10px;
+  margin-bottom: 195px;
+
+  .news {
+    float: left;
+    width: 35%;
+    padding: 20px 0 100px 34px;
+    background: @dark-gray;
+    color: white;
+    border-radius: 5px;
+
+    .news-wrapper {
+      max-width: 250px;
+    }
+
+    h2 {
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      border-bottom: 1px solid white;
+      padding-bottom: 5px;
+    }
+
+    h3 {
+      font-style: italic;
+    }
+
+    p {
+      margin-bottom: 26px;
+    }
+
+    .news-archive {
+      text-align: right;
+
+      a {
+        color: white;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  .main-content {
+    float: right;
+    width: 57%;
+    padding: 20px 0 0 0;
+    color: @gray-for-text;
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 34px;
+    }
+
+    p {
+      margin-bottom: 28px;
+    }
+  }
+}
+
+// footer
+
+.footer-content-wrapper {
+  padding: 50px 10px 54px 10px;
+  display: flex;
+  justify-content: space-between;
+
+  .footer, .footer a {
+    color: white;
+  }
+
+  .footer {
+
+    &-nav {
+      flex-grow: 1;
+      padding-left: 150px;
+
+      li {
+        margin-bottom: 5px;
+
+        a:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    &-developer {
+      padding-right: 10px;
+      padding-left: 50px;
+      background: url('../img/footer-logo.png') no-repeat 5px 7px;
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
